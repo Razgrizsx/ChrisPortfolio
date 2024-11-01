@@ -1,13 +1,13 @@
-// @ts-nocheck
-import React, { useRef, useEffect } from "react";
+"use client";
+import React from "react";
 import { useGLTF } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useNavigate } from "react-router-dom";
 
 import cabinScene from "../assets/cozy_cabin.glb";
 
 const Cabin = (props) => {
   const { nodes, materials } = useGLTF(cabinScene);
-  const cabinRef = useRef();
+  const navigate = useNavigate();
   return (
     <group {...props}>
       <group
@@ -31,6 +31,9 @@ const Cabin = (props) => {
         position={[-63.254, -6.794, 9.599]}
         rotation={[-0.003, Math.PI / 2, 0]}
         scale={1.135}
+        onClick={(e) => navigate("/about")}
+        onPointerOver={() => (document.body.style.cursor = "pointer")}
+        onPointerOut={() => (document.body.style.cursor = "default")}
       >
         <mesh
           castShadow

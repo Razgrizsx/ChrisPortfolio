@@ -1,16 +1,12 @@
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import Loader from "../components/Loader";
-import React from "react";
+import React, { useState } from "react";
 import Cabin from "../models/Cabin";
 import RainScene from "../models/Rain";
-import ThunderScene from "../models/Thunder";
+import stormVideo from "../assets/stormVideo.mp4";
+import { CiVolumeHigh, CiVolumeMute } from "react-icons/ci";
 
-{
-  /* <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
-        Popup
-      </div> */
-}
 const Home = () => {
   const adjustforScreenSize = () => {
     let screenScale, screenPosition;
@@ -23,19 +19,52 @@ const Home = () => {
     }
     return [screenScale, screenPosition];
   };
+  const [soundOn, setSoundOn] = useState(true);
+
+  const handleSound = () => {
+    const audioElement = document.getElementById("stormAudio");
+    console.log(audioElement.volume);
+    audioElement.volume = audioElement.volume === 0 ? 0.4 : 0;
+    setSoundOn(!soundOn);
+  };
+
+  useEffect(() => {
+    const audioElement = document.getElementById("stormAudio");
+    audioElement.volume = 0.4;
+  }, []);
 
   const [cabinScale, cabinPosition] = adjustforScreenSize();
   return (
-    <section className='w-full h-screen relative'>
+    <section className="w-full h-screen relative">
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover"
+        src={stormVideo}
+        autoPlay
+        loop
+        muted
+        onLoadedMetadata={(e) => e.target.play()}
+      />
+
+      <audio id="stormAudio" src={stormVideo} autoPlay loop />
+      <button
+        className="bg-gray-600 absolute right-4 top-6 rounded-full z-50 w-9 h-9 flex justify-center items-center opacity-50 text-white p-1"
+        onClick={handleSound}
+      >
+        {soundOn ? (
+          <CiVolumeHigh className="w-full h-full" />
+        ) : (
+          <CiVolumeMute className="w-full h-full" />
+        )}
+      </button>
       <Canvas
-        className='w-full h-screen bg-[#04070e]'
+        className="w-full h-screen bg-transparent"
         camera={{
           near: 0.1,
-          far: 1000
+          far: 1000,
         }}
       >
         <Suspense fallback={<Loader />}>
-          <directionalLight position={[50, 50, 3000]} intensity={1} />
+          <directionalLight position={[50, 50, 3000]} intensity={0.5} />
 
           <Cabin
             position={cabinPosition}
@@ -43,7 +72,6 @@ const Home = () => {
             rotation={[-0.02, 1.1, -0.02]}
           />
           <RainScene />
-          <ThunderScene />
         </Suspense>
       </Canvas>
     </section>
