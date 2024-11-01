@@ -1,7 +1,6 @@
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useEffect } from "react";
 import Loader from "../components/Loader";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect, Suspense } from "react";
 import Cabin from "../models/Cabin";
 import RainScene from "../models/Rain";
 import stormVideo from "../assets/stormVideo.mp4";
@@ -35,7 +34,7 @@ const Home = () => {
 
   const [cabinScale, cabinPosition] = adjustforScreenSize();
   return (
-    <section className="w-full h-screen relative">
+    <section className="w-full h-screen relative bg-black" id="home">
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
         src={stormVideo}
@@ -65,7 +64,6 @@ const Home = () => {
       >
         <Suspense fallback={<Loader />}>
           <directionalLight position={[50, 50, 3000]} intensity={0.5} />
-
           <Cabin
             position={cabinPosition}
             scale={cabinScale}

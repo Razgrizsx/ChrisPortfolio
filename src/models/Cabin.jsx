@@ -1,13 +1,42 @@
 "use client";
-import React from "react";
+
+import React, { useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useNavigate } from "react-router-dom";
+import gsap from "gsap";
+import clickSound from "../assets/steps.wav";
+import doorSound from "../assets/door.mp3";
 
 import cabinScene from "../assets/cozy_cabin.glb";
 
 const Cabin = (props) => {
   const { nodes, materials } = useGLTF(cabinScene);
   const navigate = useNavigate();
+  const tl = useRef(null);
+  const audioRef = useRef(null);
+  const doorRef = useRef(null);
+
+  useEffect(() => {
+    tl.current = gsap.timeline({ paused: true, defaults: { duration: 1 } });
+    tl.current.to("#home", { opacity: 0, duration: 1 });
+    audioRef.current = new Audio(clickSound);
+    doorRef.current = new Audio(doorSound);
+  }, []);
+
+  const triggerAnimation = () => {
+    if (tl.current) {
+      tl.current.play();
+      setTimeout(() => {
+        audioRef.current.play();
+      }, 500);
+      setTimeout(() => {
+        doorRef.current.play();
+      }, 2600);
+    }
+    setTimeout(() => {
+      navigate("/about");
+    }, 3100);
+  };
   return (
     <group {...props}>
       <group
@@ -31,7 +60,7 @@ const Cabin = (props) => {
         position={[-63.254, -6.794, 9.599]}
         rotation={[-0.003, Math.PI / 2, 0]}
         scale={1.135}
-        onClick={(e) => navigate("/about")}
+        onClick={(e) => triggerAnimation()}
         onPointerOver={() => (document.body.style.cursor = "pointer")}
         onPointerOut={() => (document.body.style.cursor = "default")}
       >
