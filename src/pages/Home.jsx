@@ -54,6 +54,7 @@ const Home = () => {
           <CiVolumeMute className="w-full h-full" />
         )}
       </button>
+
       <Canvas
         className="w-full h-screen bg-transparent"
         camera={{

@@ -116,7 +116,6 @@ const About = () => {
         onLoadedMetadata={(e) => e.target.play()}
       />
       <audio id="stormAudio" src={stormVideo} autoPlay loop />
-      {/* <audio id="paperAudio" src={paperSound} autoPlay loop /> */}
       <button
         className="bg-gray-600 absolute right-4 top-6 rounded-full z-50 w-9 h-9 flex justify-center items-center opacity-50 text-white p-1"
         onClick={handleSound}
