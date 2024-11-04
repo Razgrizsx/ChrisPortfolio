@@ -151,25 +151,25 @@ const About = () => {
           setCurrentPaper("projects");
           animatePaper();
         }}
-        className="w-[7%] h-[16%] left-[22%] top-[44%] rotate-[63deg] absolute z-50"
+        className="w-[7%] h-[16%] left-[26%] top-[44%] rotate-[63deg] absolute z-50"
       ></button>
       <button
         onClick={() => {
           setCurrentPaper("skills");
           animatePaper();
         }}
-        className="w-[10%] h-[18%] left-[31%] top-[54%] rotate-[10deg] absolute z-50"
+        className="w-[9%] h-[18%] left-[34%] top-[54%] rotate-[10deg] absolute z-50"
       ></button>
       <button
         onClick={() => {
           setCurrentPaper("aboutMe");
           animatePaper();
         }}
-        className="w-[10%] h-[18%] left-[53%] top-[53%] rotate-[10deg] absolute z-50"
+        className="w-[10%] h-[18%] left-[52%] top-[53%] rotate-[10deg] absolute z-50"
       ></button>
       <div
         ref={textRef}
-        className="w-[33%] h-[75%] left-[37.5%] top-[12%] absolute "
+        className="w-[27%] h-[75%] left-[40%] top-[12%] absolute "
       >
         {currentPaper && (
           <button

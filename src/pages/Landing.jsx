@@ -13,7 +13,7 @@ function Landing() {
         distance. You find yourself before a cabin, hidden deep in the woods,
         where whispers of forgotten lore and eerie shadows linger. As lightning
         flashes, the door creaks open...”
-        <div>Click to continue...</div>
+        <div className="hover:underline">Click to continue...</div>
       </Link>
     </div>
   );
