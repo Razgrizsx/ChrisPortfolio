@@ -539,7 +539,7 @@ const Cabin = (props) => {
         rotation={[-Math.PI / 2, 0, 0]}
         scale={[0.622, 0.622, 1]}
       />
-      <mesh
+      {/*  <mesh
         castShadow
         receiveShadow
         geometry={nodes["Moon_Material_#180_0"].geometry}
@@ -547,7 +547,7 @@ const Cabin = (props) => {
         position={[305.436, 330.933, -89.29]}
         rotation={[0.339, -1.021, 1.863]}
         scale={0.57}
-      />
+      /> */}
       <mesh
         castShadow
         receiveShadow

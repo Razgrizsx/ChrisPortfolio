@@ -46,7 +46,7 @@ const Home = () => {
 
       <audio id="stormAudio" src={stormVideo} autoPlay loop />
       <button
-        className="bg-gray-600 absolute right-4 top-6 rounded-full z-50 w-9 h-9 flex justify-center items-center opacity-50 text-white p-1"
+        className="bg-gray-600 hover:bg-gray-500 absolute right-4 top-6 rounded-full z-50 w-9 h-9 flex justify-center items-center opacity-50 text-white p-1"
         onClick={handleSound}
       >
         {soundOn ? (
