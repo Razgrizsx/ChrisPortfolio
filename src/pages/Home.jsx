@@ -22,7 +22,6 @@ const Home = () => {
 
   const handleSound = () => {
     const audioElement = document.getElementById("stormAudio");
-    console.log(audioElement.volume);
     audioElement.volume = audioElement.volume === 0 ? 0.4 : 0;
     setSoundOn(!soundOn);
   };

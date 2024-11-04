@@ -7,7 +7,7 @@ import { GsapProvider } from "./provider/GsapProvider";
 
 function App() {
   return (
-    <main className="bg-white">
+    <main className="bg-black">
       <GsapProvider>
         <Router>
           <Navbar />
