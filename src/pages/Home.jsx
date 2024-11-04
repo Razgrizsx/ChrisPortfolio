@@ -5,6 +5,8 @@ import Cabin from "../models/Cabin";
 import RainScene from "../models/Rain";
 import stormVideo from "../assets/stormVideo.mp4";
 import { CiVolumeHigh, CiVolumeMute } from "react-icons/ci";
+import { Link } from "react-router-dom";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 const Home = () => {
   const adjustforScreenSize = () => {
@@ -54,6 +56,22 @@ const Home = () => {
           <CiVolumeMute className="w-full h-full" />
         )}
       </button>
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        className="bg-gray-600 hover:bg-gray-500 absolute -right-[34px] top-36 rotate-90 z-50 flex justify-center items-center opacity-50 text-white p-1"
+        onChange={(e) =>
+          (document.getElementById("stormAudio").volume = e.target.value)
+        }
+      />
+      <Link
+        to={"/"}
+        className="bg-gray-600 hover:bg-gray-500 absolute left-4 top-6 rounded-full z-50 w-9 h-9 flex justify-center items-center opacity-50 text-white p-1"
+      >
+        <AiOutlineArrowLeft className="w-full h-full" />
+      </Link>
 
       <Canvas
         className="w-full h-screen bg-transparent"
